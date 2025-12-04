@@ -9,7 +9,6 @@ pipeline {
     }
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 checkout scm
@@ -53,6 +52,9 @@ pipeline {
         success {
             echo "Deployment successful!"
             sh "docker ps"
+        }
+        failure {
+            echo "Deployment failed!"
         }
     }
 }
